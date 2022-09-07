@@ -16,7 +16,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/mixin/_helper";`,
+        additionalData: `@import "./src/assets/scss/_main";`,
       },
     },
   },

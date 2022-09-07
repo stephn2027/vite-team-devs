@@ -1,4 +1,4 @@
-import MENU_ITEM from '../../constants/menu';
+import MENU_ITEM from '../../assets/constants/menu';
 
 export default function Header() {
   return (

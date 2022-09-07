@@ -1,20 +1,22 @@
 .herostyle {
   background-color: var(--black);
   height: 750px;
-  &--content {
+  &_content {
     max-width: 50rem;
     @include center;
   }
-  &--text {
+  &_text {
     color: var(--white);
     font-weight: bold;
     font-size: 60px;
+    text-align: center;
   }
-  &--btn {
+  &_btn {
     margin-top: 20px;
     padding-bottom: 10px;
     font-size: 18px;
-    width: 290px;
+    width: 250px;
+    text-align: center;
     color: var(--white);
     border-bottom: 1px solid var(--primary);
   }
