@@ -1,0 +1,21 @@
+.herostyle {
+  background-color: var(--black);
+  height: 750px;
+  &--content {
+    max-width: 50rem;
+    @include center;
+  }
+  &--text {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 60px;
+  }
+  &--btn {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    width: 290px;
+    color: var(--white);
+    border-bottom: 1px solid var(--primary);
+  }
+}

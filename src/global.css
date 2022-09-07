@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.root,
+#root,
+#docs-root {
+  --primary: #9f24d7;
+  --secondary: #4660f5;
+  --black: #0e0e12;
+  --white: #fff;
+}

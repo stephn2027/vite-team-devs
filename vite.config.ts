@@ -13,4 +13,11 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/setupTest.ts'],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/mixin/_helper";`,
+      },
+    },
+  },
 });
