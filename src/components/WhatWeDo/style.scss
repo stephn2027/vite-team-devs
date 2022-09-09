@@ -1,0 +1,25 @@
+.wwd-style{
+    background-color:var(--white);
+    height: 800px;
+    justify-content: center;
+    margin: 5rem;
+    &_content{
+        max-width: 40rem;
+        @include center;
+        padding: 2rem;
+        .content-style_container{
+            flex-direction: column;
+           
+            .content-style_text{
+                font-weight: bolder;
+                font-size: 4rem;
+            }
+            .content-style_img{
+                height: 400px;
+                
+            }
+        }
+        
+    }
+   
+}
