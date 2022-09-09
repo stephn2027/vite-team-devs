@@ -2,7 +2,7 @@
 /**
  * Class representing a Slide element (.slide)
  */
-export class Slide {
+export default class Slide {
   // DOM elements
   DOM = {
     // main element (.slide)

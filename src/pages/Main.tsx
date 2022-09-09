@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import 'splitting/dist/splitting.css';
@@ -5,7 +6,7 @@ import 'splitting/dist/splitting-cells.css';
 import Splitting from 'splitting';
 import { Observer } from 'gsap/Observer';
 // import { preloadImages } from './utils';
-import { Slide } from './slide';
+import Slide from './slide';
 
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
@@ -23,9 +24,10 @@ function Main() {
     };
     // total number of slides
     const totalSlides = DOM.slides.length;
-    const slidesArr = [];
+    const slidesArr: any[] = [];
     DOM.slides.forEach((slide) => {
-      slidesArr.push(new Slide(slide));
+      const SlideClass = new Slide(slide);
+      slidesArr.push(SlideClass);
     });
 
     // current slide position
