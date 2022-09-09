@@ -1,0 +1,40 @@
+.frame__nav {
+  grid-area: nav;
+  display: grid;
+  grid-auto-flow: row;
+  place-items: start;
+  align-content: end;
+  grid-gap: 0.5rem;
+}
+
+.frame__nav-button {
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+  pointer-events: auto;
+}
+
+.frame__nav-button:not(.frame__nav-button--current):hover {
+  color: var(--color-link-hover);
+}
+
+.frame__nav-button--current {
+  color: var(--color-text);
+}
+
+.frame__nav-button::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  top: 50%;
+  background-color: currentColor;
+  position: absolute;
+  right: calc(100% + 4px);
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform 0.8s ease-in-out;
+}
+
+.frame__nav-button--current::before {
+  transform: scaleX(1);
+}

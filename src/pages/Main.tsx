@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 /* eslint-disable import/extensions */
 import './base.css';
 import { gsap } from 'gsap';
@@ -7,13 +7,13 @@ import 'splitting/dist/splitting-cells.css';
 import Splitting from 'splitting';
 import { Observer } from 'gsap/Observer';
 import { preloadImages } from './utils';
-import { CursorText } from './cursor';
 import { Slide } from './slide';
+
+import Navigation from '../components/Navigation';
 
 gsap.registerPlugin(Observer);
 Splitting();
 function Main() {
-  const ref = useRef(null);
   useEffect(() => {
     const DOM = {
       slides: [...document.querySelectorAll('.slide')],
@@ -23,11 +23,6 @@ function Main() {
         '.frame__nav > .frame__nav-button'
       ),
     };
-    // cursor text chars
-    DOM.cursorChars = DOM.cursor.querySelectorAll('.word > .char, .whitespace');
-    // backCtrl text chars
-    DOM.backChars = DOM.backCtrl.querySelectorAll('.word > .char, .whitespace');
-
     // total number of slides
     const totalSlides = DOM.slides.length;
 
@@ -221,112 +216,6 @@ function Main() {
           0
         );
     };
-
-    const showContent = (position) => {
-      if (isAnimating) return;
-      isAnimating = true;
-
-      const slide = slidesArr[position];
-
-      slide.isOpen = true;
-
-      gsap
-        .timeline({
-          defaults: {
-            duration: 1.6,
-            ease: 'power3.inOut',
-          },
-          onStart: () => {},
-          onComplete: () => {
-            isAnimating = false;
-          },
-        })
-        .addLabel('start', 0)
-        .add(() => {
-          toggleCursorBackTexts('content');
-        }, 'start')
-        .to(
-          slide.DOM.img,
-          {
-            yPercent: -100,
-          },
-          'start'
-        )
-        .set(
-          slide.DOM.imgInner,
-          {
-            transformOrigin: '50% 100%',
-          },
-          'start'
-        )
-        .to(
-          slide.DOM.imgInner,
-          {
-            yPercent: 100,
-            scaleY: 2,
-          },
-          'start'
-        )
-        .to(
-          slide.DOM.contentImg,
-          {
-            startAt: {
-              transformOrigin: '50% 0%',
-              scaleY: 1.5,
-            },
-            scaleY: 1,
-          },
-          'start'
-        );
-    };
-
-    const hideContent = (slide, animate = false) => {
-      // reset values
-      isAnimating = true;
-
-      const complete = () => {
-        // eslint-disable-next-line no-param-reassign
-        slide.isOpen = false;
-        isAnimating = false;
-      };
-
-      if (animate) {
-        gsap
-          .timeline({
-            defaults: {
-              duration: 1.6,
-              ease: 'power3.inOut',
-            },
-            onComplete: complete,
-          })
-          .addLabel('start', 0)
-          .to(
-            slide.DOM.img,
-            {
-              yPercent: 0,
-            },
-            'start'
-          )
-          .to(
-            slide.DOM.imgInner,
-            {
-              yPercent: 0,
-              scaleY: 1,
-            },
-            'start'
-          );
-      } else {
-        gsap.set(slide.DOM.img, {
-          yPercent: 0,
-        });
-        gsap.set(slide.DOM.imgInner, {
-          yPercent: 0,
-          scaleY: 1,
-        });
-        complete();
-      }
-    };
-
     const initEvents = () => {
       // Links navigation
       [...DOM.navigationItems].forEach((item, position) => {
@@ -335,15 +224,6 @@ function Main() {
           navigate(position);
         });
       });
-
-      // Back click
-      DOM.backCtrl.addEventListener('click', () => {
-        if (isAnimating) return;
-        isAnimating = true;
-        toggleCursorBackTexts();
-        hideContent(slidesArr[current], true);
-      });
-
       // Initialize the GSAP Observer plugin
       Observer.create({
         type: 'wheel,touch,pointer',
@@ -353,21 +233,10 @@ function Main() {
         wheelSpeed: -1,
         tolerance: 10,
       });
-
-      // eslint-disable-next-line no-restricted-syntax
-      for (const [position, slide] of slidesArr.entries()) {
-        slide.DOM.img.addEventListener('click', () => {
-          showContent(position);
-        });
-      }
     };
 
     // Set current slide
     setCurrentSlide(0);
-
-    // Initialize custom cursor
-    // eslint-disable-next-line no-new, no-undef
-    new CursorText(DOM.cursor);
 
     // Initialize the events
     initEvents();
@@ -381,44 +250,7 @@ function Main() {
     <div className="loading">
       <main>
         <div className="frame">
-          <div className="frame__title">
-            <a
-              className="frame__title-prev"
-              href="https://tympanus.net/Development/ImageToContent/"
-            >
-              Previous demo
-            </a>
-            <h1 className="frame__title-main">
-              Fullscreen Scrolling Slideshow
-            </h1>
-            <a
-              aria-label="Back to the article"
-              className="frame__title-back"
-              href="https://tympanus.net/codrops/?p=64521"
-            >
-              <span>&rarr;</span>
-            </a>
-          </div>
-          <nav className="frame__nav">
-            <button type="button" className="frame__nav-button unbutton">
-              Stronger
-            </button>
-            <button type="button" className="frame__nav-button unbutton">
-              No choice
-            </button>
-            <button type="button" className="frame__nav-button unbutton">
-              Owned no longer
-            </button>
-            <button type="button" className="frame__nav-button unbutton">
-              Assert control
-            </button>
-            <button type="button" className="frame__nav-button unbutton">
-              Cold &amp; detached
-            </button>
-          </nav>
-          <button type="button" className="frame__back unbutton">
-            <span data-splitting>&larr; Go back</span>
-          </button>
+          <Navigation />
           <span className="frame__info">&darr; Scroll or drag &darr;</span>
         </div>
         <div className="slides">
@@ -503,13 +335,9 @@ function Main() {
           </div>
         </div>
         <div className="cursor">
-          <span className="cursor__text" data-splitting>
-            + Discover more
-          </span>
+          <span className="cursor__text" data-splitting />
         </div>
       </main>
-      <script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js" />
-      <script type="module" src="js/index.js" />
     </div>
   );
 }
