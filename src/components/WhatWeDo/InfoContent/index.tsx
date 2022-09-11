@@ -1,9 +1,9 @@
-
+import './style.scss';
 
 export default function ContentInfo() {
   return (
     <div className="hero content-style">
-      <div className="hero-content content-style_container">
+      <div className="content-style_container">
         <div>
           <h1 className="text-5xl font-bold content-style_text">What We Do</h1>
           <p className="py-6 content-style_subtext">

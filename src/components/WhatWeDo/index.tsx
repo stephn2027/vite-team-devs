@@ -1,17 +1,17 @@
-import ContentInfo from './ContentInfo';
-import ContentSteps from './ContentSteps';
+import ContentInfo from './InfoContent';
+import ContentSteps from './StepsContent';
 import './style.scss';
 
 export default function WhatWeDo() {
   return (
     <div className="flex place-items-center wwd-style">
-      <div className="grid flex-grow wwd-style_content">
+      <div className="wwd-style_content wwd-style_info">
         <ContentInfo />
       </div>
 
-      <div className="grid flex-grow wwd-style_content">
+      <div className="wwd-style_content wwd-style_steps">
         <ContentSteps />
-        </div>
+      </div>
     </div>
   );
 }

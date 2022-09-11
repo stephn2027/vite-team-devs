@@ -1,0 +1,24 @@
+.content-style {
+
+
+    &_container {
+        flex-direction: column;
+        margin-block: 5rem;
+
+        .content-style_text {
+            font-weight: bolder;
+            font-size: 4rem;
+
+        }
+
+        .content-style_subtext {
+            padding-block: 2rem;
+        }
+
+        .content-style_img {
+            height: 300px;
+            width: 90%;
+
+        }
+    }
+}
