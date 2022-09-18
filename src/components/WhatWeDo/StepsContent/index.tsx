@@ -11,7 +11,7 @@ export default function ContentSteps() {
             className={
               id === 1
                 ? 'step step-secondary steps-style_list'
-                : 'step steps-style_list'
+                : 'step step-neutral steps-style_list'
             }
           >
             <div className="steps-style_text">
