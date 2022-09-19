@@ -158,11 +158,6 @@ function Main() {
 
     // Initialize the events
     initEvents();
-
-    // Preload images and initialize scrolling animations
-    // preloadImages('.slide__img-inner').then((_) => {
-    //   document.body.classList.remove('loading');
-    // });
   }, []);
   return (
     <div className="loading">

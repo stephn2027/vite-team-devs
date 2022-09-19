@@ -11,6 +11,7 @@
   --color-link: rgba(255, 255, 255, 0.5);
   --color-link-hover: #f8c5dc;
   --color-bg-slide: #171719;
+  /* background-color: #171719; */
 }
 
 body {
@@ -228,7 +229,6 @@ a:focus-visible {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   will-change: transform;
-  background-image: url(../assets/img/1.jpg);
 }
 
 .slide__content {
@@ -249,9 +249,7 @@ a:focus-visible {
   height: 300px;
   background-size: cover;
   background-position: 50% 50%;
-  grid-area: img;
   will-change: transform;
-  background-image: url(../assets/img/1.jpg);
 }
 
 .slide__content h2 {
