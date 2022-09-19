@@ -9,7 +9,7 @@ import { Observer } from 'gsap/Observer';
 import Slide from './slide';
 
 import Navigation from '../components/Navigation';
-import Hero from '../components/Hero';
+import WhatWeDo from '../components/WhatWeDo';
 
 gsap.registerPlugin(Observer);
 Splitting();
@@ -160,44 +160,42 @@ function Main() {
     initEvents();
   }, []);
   return (
-    <div className="loading">
-      <main>
-        <div className="frame">
-          <Navigation />
-          <span className="frame__info">&darr; Scroll or drag &darr;</span>
-        </div>
-        <div className="slides">
-          <div className="slide">
-            <div className="slide__inner">
-              <div className="slide__content">
-                <Hero />
-              </div>
-            </div>
-          </div>
-          <div className="slide">
-            <div className="slide__inner">
-              <div className="slide__content">
-                <Hero />
-              </div>
-            </div>
-          </div>
-          <div className="slide">
-            <div className="slide__inner">
-              <div className="slide__content">
-                <Hero />
-              </div>
-            </div>
-          </div>
-          <div className="slide">
-            <div className="slide__inner">
-              <div className="slide__content">
-                <Hero />
-              </div>
+    <main>
+      <div className="frame">
+        <Navigation />
+        <span className="frame__info">&darr; Scroll or drag &darr;</span>
+      </div>
+      <div className="slides">
+        <div className="slide">
+          <div className="slide__inner">
+            <div className="slide__content">
+              <WhatWeDo />
             </div>
           </div>
         </div>
-      </main>
-    </div>
+        <div className="slide">
+          <div className="slide__inner">
+            <div className="slide__content">
+              <WhatWeDo />
+            </div>
+          </div>
+        </div>
+        <div className="slide">
+          <div className="slide__inner">
+            <div className="slide__content">
+              <WhatWeDo />
+            </div>
+          </div>
+        </div>
+        <div className="slide">
+          <div className="slide__inner">
+            <div className="slide__content">
+              <WhatWeDo />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 
