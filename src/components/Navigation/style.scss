@@ -10,9 +10,6 @@
     position: relative;
     transition: color 0.3s;
     pointer-events: auto;
-    &--curent {
-      color: var(--color-text);
-    }
     &::before {
       content: '';
       width: 2.5rem;
@@ -27,10 +24,27 @@
     }
   }
 }
+.frame__nav-button.frame__nav-button--current {
+  color: var(--primary);
+}
 .frame__nav-button:not(.frame__nav-button--current):hover {
-  color: var(--color-link-hover);
+  color: var(--secondary);
 }
 
 .frame__nav-button--current::before {
   transform: scaleX(1);
+}
+
+.unbutton {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  color: var(--color-link);
+}
+
+.unbutton:focus {
+  outline: none;
 }

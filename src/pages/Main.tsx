@@ -5,11 +5,10 @@ import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
 import Splitting from 'splitting';
 import { Observer } from 'gsap/Observer';
-// import { preloadImages } from './utils';
-import Slide from './slide';
+import Slide from '../utils/slide';
 
 import Navigation from '../components/Navigation';
-import WhatWeDo from '../components/WhatWeDo';
+import AllSlides from '../components/AllSlides';
 
 gsap.registerPlugin(Observer);
 Splitting();
@@ -24,6 +23,7 @@ function Main() {
     };
     // total number of slides
     const totalSlides = DOM.slides.length;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const slidesArr: any[] = [];
     DOM.slides.forEach((slide) => {
       const SlideClass = new Slide(slide);
@@ -152,50 +152,19 @@ function Main() {
         tolerance: 10,
       });
     };
-
     // Set current slide
     setCurrentSlide(0);
-
     // Initialize the events
     initEvents();
   }, []);
   return (
-    <main>
+    <>
       <div className="frame">
         <Navigation />
         <span className="frame__info">&darr; Scroll or drag &darr;</span>
       </div>
-      <div className="slides">
-        <div className="slide">
-          <div className="slide__inner">
-            <div className="slide__content">
-              <WhatWeDo />
-            </div>
-          </div>
-        </div>
-        <div className="slide">
-          <div className="slide__inner">
-            <div className="slide__content">
-              <WhatWeDo />
-            </div>
-          </div>
-        </div>
-        <div className="slide">
-          <div className="slide__inner">
-            <div className="slide__content">
-              <WhatWeDo />
-            </div>
-          </div>
-        </div>
-        <div className="slide">
-          <div className="slide__inner">
-            <div className="slide__content">
-              <WhatWeDo />
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+      <AllSlides />
+    </>
   );
 }
 

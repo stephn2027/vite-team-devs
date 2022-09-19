@@ -24,5 +24,6 @@
     "tailwind.config.cjs",
     "postcss.config.cjs"
   ],
+  "exclude": ["dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
