@@ -1,5 +1,6 @@
 import './style.scss';
 import WhatWeDo from '../Slides/WhatWeDo';
+import ContactUs from '../Slides/ContactUs';
 
 export default function Slides() {
   return (
@@ -7,7 +8,7 @@ export default function Slides() {
       <WhatWeDo />
       <WhatWeDo />
       <WhatWeDo />
-      <WhatWeDo />
+      <ContactUs />
     </div>
   );
 }

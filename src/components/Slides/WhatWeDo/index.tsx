@@ -10,7 +10,6 @@ export default function WhatWeDo() {
             <h1 className="herostyle_text">
               We grow brands with digital <br /> & creative precision
             </h1>
-            <div className="herostyle_btn">START A NEW PROJECT</div>
           </div>
         </div>
       </div>
