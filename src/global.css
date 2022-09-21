@@ -9,4 +9,46 @@
   --secondary: #4660f5;
   --black: #0e0e12;
   --white: #fff;
+
+  font-size: 13px;
+  --color-text: #fff;
+  --color-bg: #000;
+  --color-link: rgba(255, 255, 255, 0.5);
+  --color-link-hover: #f8c5dc;
+  --color-bg-slide: #171719;
+
+  background: var(--color-bg-slide);
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg-slide);
+  font-family: obviously, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+    Arial, sans-serif;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.frame {
+  padding: 2.5rem;
+  display: grid;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  pointer-events: none;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto 1fr;
+  grid-gap: 1rem;
+  grid-template-areas: 'back sponsor' 'title title' 'info info' 'nav nav';
 }
