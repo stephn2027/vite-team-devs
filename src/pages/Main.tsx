@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
@@ -13,7 +13,11 @@ import AllSlides from '../components/AllSlides';
 gsap.registerPlugin(Observer);
 Splitting();
 function Main() {
+  const arrowUp = useRef<HTMLDivElement>(null);
+  const arrowDown = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    gsap.to(arrowUp.current, { y: -4, repeat: -1, yoyo: true });
+    gsap.to(arrowDown.current, { y: 4, repeat: -1, yoyo: true });
     const DOM = {
       slides: [...document.querySelectorAll('.slide')],
       backCtrl: document.querySelector('.frame__back'),
@@ -161,8 +165,14 @@ function Main() {
     <>
       <div className="frame">
         <Navigation />
-        <span className="text-white subpixel-antialiased">
-          &uarr; Scroll or drag &darr;
+        <span className="text-white subpixel-antialiased flex">
+          <span className="arrow-down mr-2" ref={arrowUp}>
+            &uarr;
+          </span>
+          Scroll or drag
+          <span className="ml-2" ref={arrowDown}>
+            &darr;
+          </span>
         </span>
       </div>
       <AllSlides />
