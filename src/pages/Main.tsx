@@ -161,7 +161,9 @@ function Main() {
     <>
       <div className="frame">
         <Navigation />
-        <span className="frame__info">&darr; Scroll or drag &darr;</span>
+        <span className="text-white subpixel-antialiased">
+          &uarr; Scroll or drag &darr;
+        </span>
       </div>
       <AllSlides />
     </>

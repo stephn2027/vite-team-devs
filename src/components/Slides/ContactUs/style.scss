@@ -1,0 +1,24 @@
+.contact {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(95.91deg, #4660f5 2.73%, #9f24d7 100%);
+  @include center;
+  &_text {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+  }
+  &_btn {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    width: 230px;
+    text-align: center;
+    color: var(--white);
+    border-bottom: 1px solid var(--white);
+  }
+}
+
+.work {
+  background: var(--black);
+}
