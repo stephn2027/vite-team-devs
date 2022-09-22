@@ -44,7 +44,9 @@
   cursor: pointer;
   color: var(--color-link);
 }
-
+.link-black {
+  color: var(--black);
+}
 .unbutton:focus {
   outline: none;
 }

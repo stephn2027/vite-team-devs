@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
@@ -15,12 +15,12 @@ Splitting();
 function Main() {
   const arrowUp = useRef<HTMLDivElement>(null);
   const arrowDown = useRef<HTMLDivElement>(null);
+  const [invert, setInvert] = useState(false);
   useEffect(() => {
     gsap.to(arrowUp.current, { y: -4, repeat: -1, yoyo: true });
     gsap.to(arrowDown.current, { y: 4, repeat: -1, yoyo: true });
     const DOM = {
       slides: [...document.querySelectorAll('.slide')],
-      backCtrl: document.querySelector('.frame__back'),
       navigationItems: document.querySelectorAll(
         '.frame__nav > .frame__nav-button'
       ),
@@ -62,7 +62,21 @@ function Main() {
 
     const navigate = (newPosition) => {
       isAnimating = true;
-
+      const tempArray = Array.from(
+        document.querySelectorAll('.frame__nav > .frame__nav-button')
+      );
+      if (newPosition === 0) {
+        setInvert(true);
+        tempArray.splice(newPosition, 1);
+        tempArray.forEach((arrayElement, index) => {
+          tempArray[index].classList.add('link-black');
+        });
+      } else {
+        setInvert(false);
+        tempArray.forEach((arrayElement, index) => {
+          tempArray[index].classList.remove('link-black');
+        });
+      }
       // change navigation current class
       DOM.navigationItems[current].classList.remove(
         'frame__nav-button--current'
@@ -70,7 +84,6 @@ function Main() {
       DOM.navigationItems[newPosition].classList.add(
         'frame__nav-button--current'
       );
-
       // navigation direction
       const direction =
         // eslint-disable-next-line no-nested-ternary
@@ -165,7 +178,11 @@ function Main() {
     <>
       <div className="frame">
         <Navigation />
-        <span className="text-white subpixel-antialiased flex">
+        <span
+          className={`subpixel-antialiased flex ${
+            invert ? 'text-black' : 'text-white'
+          }`}
+        >
           <span className="arrow-down mr-2" ref={arrowUp}>
             &uarr;
           </span>
