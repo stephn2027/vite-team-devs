@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { gsap } from 'gsap';
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
@@ -9,13 +9,17 @@ import Slide from '../utils/slide';
 
 import Navigation from '../components/Navigation';
 import AllSlides from '../components/AllSlides';
+import AnimatedCursor from '../components/AnimatedCursor';
+
+import { ThemeContextType } from '../@types/theme';
+import { ThemeContext } from '../context/themeContext';
 
 gsap.registerPlugin(Observer);
 Splitting();
 function Main() {
+  const { theme, changeTheme } = useContext(ThemeContext) as ThemeContextType;
   const arrowUp = useRef<HTMLDivElement>(null);
   const arrowDown = useRef<HTMLDivElement>(null);
-  const [invert, setInvert] = useState(false);
   useEffect(() => {
     gsap.to(arrowUp.current, { y: -4, repeat: -1, yoyo: true });
     gsap.to(arrowDown.current, { y: 4, repeat: -1, yoyo: true });
@@ -65,14 +69,14 @@ function Main() {
       const tempArray = Array.from(
         document.querySelectorAll('.frame__nav > .frame__nav-button')
       );
-      if (newPosition === 0) {
-        setInvert(true);
+      if (newPosition === 2) {
+        changeTheme('light');
         tempArray.splice(newPosition, 1);
         tempArray.forEach((arrayElement, index) => {
           tempArray[index].classList.add('link-black');
         });
       } else {
-        setInvert(false);
+        changeTheme('dark');
         tempArray.forEach((arrayElement, index) => {
           tempArray[index].classList.remove('link-black');
         });
@@ -173,14 +177,15 @@ function Main() {
     setCurrentSlide(0);
     // Initialize the events
     initEvents();
-  }, []);
+  }, [changeTheme]);
   return (
     <>
       <div className="frame">
+        <AnimatedCursor />
         <Navigation />
         <span
           className={`subpixel-antialiased flex ${
-            invert ? 'text-black' : 'text-white'
+            theme === 'dark' ? 'text-white' : 'text-black'
           }`}
         >
           <span className="arrow-down mr-2" ref={arrowUp}>

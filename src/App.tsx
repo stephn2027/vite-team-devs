@@ -2,6 +2,9 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import NotFound from './pages/NotFound';
 
+import ThemeWrapper from './components/ThemeWrapper';
+import ThemeProvider from './context/themeContext';
+
 export function App() {
   return (
     <Routes>
@@ -12,8 +15,12 @@ export function App() {
 }
 export function WrappedApp() {
   return (
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <ThemeProvider>
+      <ThemeWrapper>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </ThemeWrapper>
+    </ThemeProvider>
   );
 }

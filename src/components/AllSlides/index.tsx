@@ -6,9 +6,9 @@ import HowWeDo from '../Slides/HowWeDo';
 export default function Slides() {
   return (
     <div className="SlideContainer">
+      <WhatWeDo />
+      <WhatWeDo />
       <HowWeDo />
-      <WhatWeDo />
-      <WhatWeDo />
       <ContactUs />
     </div>
   );
