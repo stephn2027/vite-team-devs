@@ -1,0 +1,30 @@
+.steps-style {
+
+
+    &_list {
+        height: auto;
+    }
+
+    &_text {
+        text-align: start;
+        align-self: flex-end;
+        margin-top: 3rem;
+        color: #000;
+
+    }
+
+    &_title {
+        color: var(--black);
+        font-weight: 900;
+        font-size: 1.2rem;
+
+    }
+
+    &_desc,
+    p {
+        // display: none;
+        width: 25rem;
+
+        text-align: start;
+    }
+}

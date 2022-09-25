@@ -1,5 +1,6 @@
 import './style.scss';
 import SlideContainer from '../SlideContainer';
+import WWDInfo from './WWDInfo';
 
 export default function WhatWeDo() {
   return (

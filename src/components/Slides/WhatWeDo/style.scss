@@ -1,9 +1,12 @@
 .herostyle {
-  height: 750px;
+  height: 350px;
+
   &_content {
+
     max-width: 50rem;
     @include center;
   }
+
   &_text {
     color: var(--white);
     font-weight: bold;
