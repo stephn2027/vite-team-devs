@@ -1,5 +1,20 @@
 .steps-style {
 
+    .steps-vertical .step:before {
+
+        width: 0.2rem;
+    
+        }
+        .steps .step:after {
+            font-size: large;
+            font-weight: bolder;
+            height: 2.5rem;
+            width: 2.5rem;
+    
+        }
+        .steps .step::before{
+            background-color: royalblue;
+        }
 
     &_list {
         height: auto;
