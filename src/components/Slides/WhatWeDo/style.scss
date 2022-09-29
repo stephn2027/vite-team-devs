@@ -1,23 +1,43 @@
+// <<<<<<< HEAD
 .wwd-style {
-    background-color: var(--white);
-    height: 800px;
-    justify-content: center;
-    flex: 2 1 auto;
-    box-sizing: border-box;
-    max-width: 1350px;
-    margin-inline: auto;
+  background-color: var(--white);
+  height: 800px;
+  justify-content: center;
+  flex: 2 1 auto;
+  box-sizing: border-box;
+  max-width: 1350px;
+  margin-inline: auto;
+
+  &_content {
+    margin-inline: 1rem;
+  }
+
+  &_info {
+    @include center;
+    align-self: flex-end;
+    padding: 4rem 2rem 2rem 2rem;
+  }
+
+  &_steps {
+    width: 60%;
+  }
+}
+  // =======
+  .herostyle {
+    height: 350px;
 
     &_content {
-        margin-inline: 1rem;
+
+      max-width: 50rem;
+      @include center;
     }
 
-    &_info {
-        @include center;
-        align-self: flex-end;
-        padding: 4rem 2rem 2rem 2rem;
+    &_text {
+      color: var(--white);
+      font-weight: bold;
+      font-size: 60px;
+      text-align: center;
     }
 
-    &_steps {
-        width: 60%;
-    }
-}
+    // >>>>>>> 298685d075e30329f49f106a0f111bc31cca36f4
+  }

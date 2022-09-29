@@ -1,0 +1,45 @@
+.steps-style {
+
+    .steps-vertical .step:before {
+
+        width: 0.2rem;
+    
+        }
+        .steps .step:after {
+            font-size: large;
+            font-weight: bolder;
+            height: 2.5rem;
+            width: 2.5rem;
+    
+        }
+        .steps .step::before{
+            background-color: royalblue;
+        }
+
+    &_list {
+        height: auto;
+    }
+
+    &_text {
+        text-align: start;
+        align-self: flex-end;
+        margin-top: 3rem;
+        color: #000;
+
+    }
+
+    &_title {
+        color: var(--black);
+        font-weight: 900;
+        font-size: 1.2rem;
+
+    }
+
+    &_desc,
+    p {
+        // display: none;
+        width: 25rem;
+
+        text-align: start;
+    }
+}
