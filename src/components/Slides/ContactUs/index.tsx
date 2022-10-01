@@ -11,11 +11,16 @@ export default function WhatWeDo() {
             Don&apos;t be a stranger email us
           </button>
         </div>
-        <div className="work contact place-items-center h-[50vh] w-screen">
+        <div className="work contact place-items-center h-[50vh] w-screen relative">
           <h1 className="contact_text"> Work with us</h1>
           <button type="button" className="contact_btn">
             Feel free to message
           </button>
+          <div className="footer ">
+            <h4 className="w-full absolute bottom-5 text-md text-white flex justify-center">
+              Copyright © 2022 | Hasoru | All rights reserved.
+            </h4>
+          </div>
         </div>
       </div>
     </SlideContainer>

@@ -22,6 +22,7 @@
 *,
 *::after,
 *::before {
+  cursor: none;
   box-sizing: border-box;
 }
 
@@ -51,4 +52,7 @@ body {
   grid-template-rows: auto auto auto 1fr;
   grid-gap: 1rem;
   grid-template-areas: 'back sponsor' 'title title' 'info info' 'nav nav';
+}
+button {
+  cursor: none;
 }
