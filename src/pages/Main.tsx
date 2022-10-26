@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { useEffect, useRef, useContext } from 'react';
 import { gsap } from 'gsap';
@@ -6,6 +7,11 @@ import 'splitting/dist/splitting-cells.css';
 import Splitting from 'splitting';
 import { Observer } from 'gsap/Observer';
 import Slide from '../utils/slide';
+=======
+import Layout from '../components/Layout';
+import Hero from '../components/Hero';
+import WhatWeDo from '../components/WhatWeDo';
+>>>>>>> feature/what-we-do
 
 import Navigation from '../components/Navigation';
 import AllSlides from '../components/AllSlides';
@@ -179,6 +185,7 @@ function Main() {
     initEvents();
   }, [changeTheme]);
   return (
+<<<<<<< HEAD
     <>
       <div className="frame">
         <AnimatedCursor />
@@ -199,6 +206,12 @@ function Main() {
       </div>
       <AllSlides />
     </>
+=======
+    <Layout>
+      <Hero />
+      <WhatWeDo />
+    </Layout>
+>>>>>>> feature/what-we-do
   );
 }
 

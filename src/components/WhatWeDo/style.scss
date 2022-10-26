@@ -1,0 +1,23 @@
+.wwd-style {
+    background-color: var(--white);
+    height: 800px;
+    justify-content: center;
+    flex: 2 1 auto;
+    box-sizing: border-box;
+    max-width: 1350px;
+    margin-inline: auto;
+
+    &_content {
+        margin-inline: 1rem;
+    }
+
+    &_info {
+        @include center;
+        align-self: flex-end;
+        padding: 4rem 2rem 2rem 2rem;
+    }
+
+    &_steps {
+        width: 60%;
+    }
+}

@@ -1,0 +1,51 @@
+.steps-style {
+
+    .steps-vertical .step:before {
+        height: 100%;
+        width: 0.2rem;
+        --tw-translate-y: -50%;
+        --tw-translate-x: -50%;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        margin-left: 50%;
+    }
+    .steps-vertical .step:before {
+    
+    width: 0.2rem;
+    
+    }
+    .steps .step:after {
+        font-size: large;
+        font-weight: bolder;
+        height: 2.5rem;
+        width: 2.5rem;
+        
+    }
+    .steps .step::before{
+        background-color: royalblue;
+    }
+    &_list {
+        height: auto;
+    }
+
+    &_text {
+        text-align: start;
+        align-self: flex-end;
+        margin-top: 3rem;
+
+    }
+
+    &_title {
+        color: var(--black);
+        font-weight: 900;
+        font-size: 1.2rem;
+
+    }
+
+    &_desc,
+    p {
+        // display: none;
+        width: 25rem;
+
+        text-align: start;
+    }
+}
