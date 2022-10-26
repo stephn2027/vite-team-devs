@@ -1,3 +1,9 @@
 .howWeDoStyle {
   background-color: var(--white);
+  box-sizing: border-box;
+  max-width: 1350px;
+  @include center;
+
+  flex-direction: row;
+  justify-content: space-around;
 }

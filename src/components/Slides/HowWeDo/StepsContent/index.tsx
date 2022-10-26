@@ -1,4 +1,4 @@
-import STEPS_TEXT from '../../../assets/constants/steps';
+import STEPS_TEXT from '../../../../assets/constants/steps';
 import './style.scss';
 
 export default function ContentSteps() {
