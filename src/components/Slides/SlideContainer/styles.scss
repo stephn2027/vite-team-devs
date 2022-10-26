@@ -33,12 +33,20 @@
   }
   &__content {
     grid-area: 1 / 1 / -1 / -1;
-    display: grid;
     background: var(--color-bg-slide);
+    display: grid;
     align-content: center;
     justify-content: center;
     display: grid;
     grid-template-rows: auto auto auto;
+    &--dark {
+      background: var(--color-bg-slide);
+      transition: background-color 0.8s;
+    }
+    &--white {
+      background: var(--color-white);
+      transition: background-color 0.8s;
+    }
     h2 {
       grid-area: title;
       font-weight: 200;
