@@ -12,3 +12,5 @@ const Portfolio: React.FC = () => {
     </div>
   );
 };
+
+export default Portfolio;
