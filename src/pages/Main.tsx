@@ -8,7 +8,7 @@ import { Observer } from 'gsap/Observer';
 import Slide from '../utils/slide';
 
 import Navigation from '../components/Navigation';
-import AllSlides from '../components/AllSlides';
+import AllSlides from '../components/Slides';
 import AnimatedCursor from '../components/AnimatedCursor';
 
 import { ThemeContextType } from '../@types/theme';
