@@ -69,7 +69,7 @@ function Main() {
       const tempArray = Array.from(
         document.querySelectorAll('.frame__nav > .frame__nav-button')
       );
-      if (newPosition === 2) {
+      if (newPosition === 1 || newPosition === 3) {
         changeTheme('light');
         tempArray.splice(newPosition, 1);
         tempArray.forEach((arrayElement, index) => {

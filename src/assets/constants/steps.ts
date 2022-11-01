@@ -18,7 +18,7 @@ const STEPS_TEXT: StepsText[] = [
   },
   {
     id: 3,
-    title: 'Fullstack Development',
+    title: 'Development Phase',
     description:
       'Web development, CMS & API integration, headless, and ecommerce development',
   },

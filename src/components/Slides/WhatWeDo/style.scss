@@ -1,13 +1,9 @@
-.herostyle {
-  height: 750px;
-  &_content {
-    max-width: 50rem;
-    @include center;
-  }
-  &_text {
-    color: var(--white);
-    font-weight: bold;
-    font-size: 60px;
-    text-align: center;
-  }
+.howWeDoStyle {
+  background-color: var(--white);
+  box-sizing: border-box;
+  max-width: 1350px;
+  @include center;
+
+  flex-direction: row;
+  justify-content: space-around;
 }

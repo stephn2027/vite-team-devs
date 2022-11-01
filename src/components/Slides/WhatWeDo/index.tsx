@@ -1,16 +1,17 @@
 import './style.scss';
 import SlideContainer from '../SlideContainer';
+import InfoContent from './InfoContent';
+import StepsContent from './StepsContent';
 
 export default function WhatWeDo() {
   return (
     <SlideContainer>
-      <div className="hero herostyle">
-        <div className="hero-content text_center">
-          <div className="herostyle_content">
-            <h1 className="herostyle_text">
-              We grow brands with digital <br /> & creative precision
-            </h1>
-          </div>
+      <div className="howWeDoStyle w-screen h-screen">
+        <div className="wwd-style_content wwd-style_info">
+          <InfoContent />
+        </div>
+        <div className="wwd-style_content wwd-style_info">
+          <StepsContent />
         </div>
       </div>
     </SlideContainer>

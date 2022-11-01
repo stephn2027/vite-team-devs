@@ -1,0 +1,13 @@
+.herostyle {
+  height: 750px;
+  &_content {
+    max-width: 50rem;
+    @include center;
+  }
+  &_text {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+  }
+}

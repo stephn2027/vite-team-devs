@@ -4,20 +4,24 @@ type MenuItem = {
 };
 const MENU_ITEM: MenuItem[] = [
   {
-    name: 'What We Do',
+    name: 'Who We Are',
     id: 1,
   },
   {
-    name: "What We've Done",
+    name: 'What We Do',
     id: 2,
   },
   {
-    name: 'How We Do It',
+    name: "What We've Done",
     id: 3,
   },
   {
-    name: 'Contact Us',
+    name: 'How We Do It',
     id: 4,
+  },
+  {
+    name: 'Contact Us',
+    id: 5,
   },
 ];
 
