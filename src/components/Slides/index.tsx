@@ -7,9 +7,9 @@ import WhatWeDone from './WhatWeDone';
 export default function Slides() {
   return (
     <div className="SlideContainer">
-      <WhatWeDone />
       <WhoWeAre />
       <WhatWeDo />
+      <WhatWeDone />
       <WhatWeDo />
       <ContactUs />
     </div>
