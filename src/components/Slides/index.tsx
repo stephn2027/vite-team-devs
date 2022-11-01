@@ -1,14 +1,15 @@
 import './style.scss';
-import WhoWeAre from '../Slides/WhoWeAre';
-import WhatWeDo from '../Slides/WhatWeDo';
-import ContactUs from '../Slides/ContactUs';
+import WhoWeAre from './WhoWeAre';
+import WhatWeDo from './WhatWeDo';
+import ContactUs from './ContactUs';
+import WhatWeDone from './WhatWeDone';
 
 export default function Slides() {
   return (
     <div className="SlideContainer">
+      <WhatWeDone />
       <WhoWeAre />
       <WhatWeDo />
-      <WhoWeAre />
       <WhatWeDo />
       <ContactUs />
     </div>

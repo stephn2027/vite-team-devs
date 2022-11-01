@@ -1,7 +1,7 @@
 import './style.scss';
 import SlideContainer from '../SlideContainer';
 
-export default function WhatWeDo() {
+export default function WoWeAre() {
   return (
     <SlideContainer>
       <div className="hero herostyle">
