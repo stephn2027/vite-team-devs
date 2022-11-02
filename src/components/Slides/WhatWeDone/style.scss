@@ -1,7 +1,16 @@
 .we-done-style {
   @include center;
+  > h1 {
+    @include sm-down {
+      font-size: 2rem;
+    }
+  }
   h3 {
     width: 70%;
+    @include sm-down {
+      width: 90%;
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -12,16 +21,29 @@
   gap: 1.5rem;
 
   margin-top: 5rem;
+  @include md {
+    width: 90vw;
+    margin: 0 auto;
+  }
+  @include sm {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  @include sm-down {
+    flex-direction: column;
+    height: 40vh;
+    width: auto;
+    margin-top: none;
+  }
 }
 
 .project-style {
-  border-radius: initial;
   background-color: #191920;
   h2 {
     font-size: 28px;
   }
   .card-title {
-    color: var(--primary);
+    color: var(--white);
   }
   p > span {
     color: var(--secondary);
@@ -30,4 +52,8 @@
     gap: 0.3rem;
     padding: 1.5rem;
   }
+}
+
+.portfolioCarousel-style {
+  margin-top: 1rem 0.5rem 0.5rem;
 }

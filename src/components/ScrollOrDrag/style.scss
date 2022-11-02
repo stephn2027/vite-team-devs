@@ -1,0 +1,8 @@
+.scroll-or-drag-style {
+  @include sm-down {
+    justify-content: center;
+    width: 100vw;
+    margin-left: -2.5rem;
+    margin-top: -1.5rem;
+  }
+}

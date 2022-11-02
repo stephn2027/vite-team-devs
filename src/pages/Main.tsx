@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useEffect, useRef, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { gsap } from 'gsap';
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
@@ -10,6 +10,7 @@ import Slide from '../utils/slide';
 import Navigation from '../components/Navigation';
 import AllSlides from '../components/Slides';
 import AnimatedCursor from '../components/AnimatedCursor';
+import ScrollOrDrag from '../components/ScrollOrDrag';
 
 import { ThemeContextType } from '../@types/theme';
 import { ThemeContext } from '../context/themeContext';
@@ -17,12 +18,8 @@ import { ThemeContext } from '../context/themeContext';
 gsap.registerPlugin(Observer);
 Splitting();
 function Main() {
-  const { theme, changeTheme } = useContext(ThemeContext) as ThemeContextType;
-  const arrowUp = useRef<HTMLDivElement>(null);
-  const arrowDown = useRef<HTMLDivElement>(null);
+  const { changeTheme } = useContext(ThemeContext) as ThemeContextType;
   useEffect(() => {
-    gsap.to(arrowUp.current, { y: -4, repeat: -1, yoyo: true });
-    gsap.to(arrowDown.current, { y: 4, repeat: -1, yoyo: true });
     const DOM = {
       slides: [...document.querySelectorAll('.slide')],
       navigationItems: document.querySelectorAll(
@@ -183,19 +180,7 @@ function Main() {
       <div className="frame">
         <AnimatedCursor />
         <Navigation />
-        <span
-          className={`subpixel-antialiased flex ${
-            theme === 'dark' ? 'text-white' : 'text-black'
-          }`}
-        >
-          <span className="arrow-down mr-2" ref={arrowUp}>
-            &uarr;
-          </span>
-          Scroll or drag
-          <span className="ml-2" ref={arrowDown}>
-            &darr;
-          </span>
-        </span>
+        <ScrollOrDrag />
       </div>
       <AllSlides />
     </>
