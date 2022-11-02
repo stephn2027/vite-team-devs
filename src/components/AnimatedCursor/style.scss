@@ -8,6 +8,10 @@
   border-radius: 50%;
   opacity: 1;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  @include sm-down {
+    display: none;
+  }
 }
 
 .cursor-dot {
