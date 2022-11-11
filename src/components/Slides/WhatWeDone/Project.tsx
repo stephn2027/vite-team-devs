@@ -7,6 +7,9 @@ interface ProjectProps {
     solution: string;
     tech: string;
     id: number;
+    releaseDate: string;
+    imageUrl: string;
+    description: string;
   };
 }
 
@@ -25,7 +28,7 @@ export default function Project({ project }: ProjectProps) {
           Tech Stack: <span>{project.tech}</span>
         </p>
         <div className="card-actions justify-start mt-8">
-          <Button text="Learn More" />
+          <Button text="Learn More" project={project} />
         </div>
       </div>
     </div>
