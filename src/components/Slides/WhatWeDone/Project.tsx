@@ -1,5 +1,5 @@
 import './style.scss';
-import Button from '../../Button';
+import ModalButton from '../../ModalButton';
 
 interface ProjectProps {
   project: {
@@ -28,7 +28,7 @@ export default function Project({ project }: ProjectProps) {
           Tech Stack: <span>{project.tech}</span>
         </p>
         <div className="card-actions justify-start mt-8">
-          <Button text="Learn More" project={project} />
+          <ModalButton text="Learn More" project={project} />
         </div>
       </div>
     </div>
