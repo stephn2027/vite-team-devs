@@ -1,26 +1,39 @@
-import STEPS_TEXT from '../../../assets/constants/steps';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState } from 'react';
+import STACKS from '../../../assets/constants/stacks';
 import './style.scss';
 
-export default function Steps() {
+export default function Stacks() {
+  const [active, setActive] = useState(1);
+  function handleActive(id) {
+    setActive(id);
+  }
   return (
-    <div className="steps steps-style">
-      <ul className="steps steps-vertical">
-        {STEPS_TEXT.map(({ id, title, description }) => (
-          <li
+    <div className="stacks-style">
+      <div className="tabs">
+        {STACKS.map(({ id, title }) => (
+          <div
+            className={`tab ${active === id ? 'tab-active' : ''}`}
+            onClick={() => handleActive(id)}
             key={id}
-            className={`step steps-style-list ${
-              id === 1 ? 'step-secondary' : 'step-neutral'
-            }`}
           >
-            <div>
-              <div className="steps-style_left">
-                <h1 className="steps-style_left-title">{title}</h1>
-                <p className="steps-style_left-explain">{description}</p>
-              </div>
-            </div>
-          </li>
+            {title}
+          </div>
         ))}
-      </ul>
+      </div>
+      {STACKS.map(({ id, tech }) => (
+        <div
+          key={id}
+          className={`tab-content ${
+            active === id ? 'tab-content-show' : 'tab-content-hide'
+          }`}
+        >
+          {tech}
+        </div>
+      ))}
     </div>
   );
 }

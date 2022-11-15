@@ -12,3 +12,14 @@
     gap: calc(50vw - 800px);
   }
 }
+.stacks-style {
+  width: 100%;
+  .tab-content {
+    &-show {
+      display: block;
+    }
+    &-hide {
+      display: none;
+    }
+  }
+}
