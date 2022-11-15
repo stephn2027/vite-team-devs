@@ -1,0 +1,14 @@
+.howWeDoItStyle {
+  background-color: var(--white);
+  padding: calc(100% - 85vw);
+  &_container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-sizing: border-box;
+    align-items: center;
+
+    gap: calc(50vw - 800px);
+  }
+}

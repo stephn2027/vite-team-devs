@@ -2,6 +2,7 @@ import './style.scss';
 import WhoWeAre from './WhoWeAre';
 import WhatWeDo from './WhatWeDo';
 import ContactUs from './ContactUs';
+import HowWeDoIt from './HowWeDoIt';
 import WhatWeDone from './WhatWeDone';
 
 export default function Slides() {
@@ -10,7 +11,7 @@ export default function Slides() {
       <WhoWeAre />
       <WhatWeDo />
       <WhatWeDone />
-      <WhatWeDo />
+      <HowWeDoIt />
       <ContactUs />
     </div>
   );
