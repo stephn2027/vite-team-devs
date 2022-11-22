@@ -1,12 +1,12 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-useless-fragment */
 import gsap from 'gsap';
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useCallback, useContext } from 'react';
+import { ThemeContextType } from '../../@types/theme';
+import { ThemeContext } from '../../context/themeContext';
 import './style.scss';
 
 type ModalProps = {
-  show: boolean;
-  setShow: (value: boolean) => void;
   project: {
     name: string;
     solution: string;
@@ -18,18 +18,23 @@ type ModalProps = {
   };
 };
 
-export default function Modal({ show, project, setShow }: ModalProps) {
+export default function Modal({ project }: ModalProps) {
   // const handleClickOutside = () => setShow(false);
+  const { scrollEnable, setScrollState } = useContext(
+    ThemeContext
+  ) as ThemeContextType;
+  const handleModalClose = () => {
+    setScrollState(false);
+  };
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setShow(false);
+      if (event.key === 'Escape') setScrollState(false);
     },
-    [setShow]
+    [setScrollState]
   );
   const tl = gsap.timeline();
-
   useEffect(() => {
-    if (show) {
+    if (scrollEnable) {
       gsap.set('.modal-style', { scale: 0, opacity: 0 });
       tl.to('.modal-style', {
         scale: 1,
@@ -42,14 +47,14 @@ export default function Modal({ show, project, setShow }: ModalProps) {
         document.removeEventListener('keydown', handleKeyPress);
       };
     }
-  }, [handleKeyPress, show, tl]);
+  }, [handleKeyPress, scrollEnable, tl]);
   return (
     <>
-      {show && (
+      {scrollEnable && (
         <div
           className="modal-style fixed inset-x-0 top-0 z-10"
-          onClick={() => setShow(!show)}
           role="button"
+          onClick={() => handleModalClose()}
           tabIndex={0}
           onKeyDown={null}
         >
@@ -57,7 +62,7 @@ export default function Modal({ show, project, setShow }: ModalProps) {
             <div className="modal-style_container border-4 border-secondary rounded-lg shadow-lg bg-neutral outline-none focus:outline-none">
               <button
                 className="p-1 ml-auto bg-transparent border-0 opacity-1 float-right leading-none font-semibold"
-                onClick={() => setShow(!show)}
+                onClick={() => handleModalClose()}
                 type="button"
               >
                 <span className="modal-close bg-transparent opacity-9 block outline-none">
@@ -77,7 +82,7 @@ export default function Modal({ show, project, setShow }: ModalProps) {
                   className="modal-header_image"
                 />
                 <ul className="modal-header_tech">
-                  <li>Tech Stack: {show}</li>
+                  <li>Tech Stack: {project.tech}</li>
                   <li>Frontend: React/TypeScript</li>
                   <li>Backend: Nextjs/TypeScript</li>
                 </ul>

@@ -1,7 +1,9 @@
 import './style.scss';
-import { useState } from 'react';
+import { useContext } from 'react';
 import Button from '../../Button';
 import Modal from '../../Modal';
+import { ThemeContextType } from '../../../@types/theme';
+import { ThemeContext } from '../../../context/themeContext';
 
 interface ProjectProps {
   project: {
@@ -16,7 +18,10 @@ interface ProjectProps {
 }
 
 export default function Project({ project }: ProjectProps) {
-  const [displayModal, setDisplayModal] = useState<boolean>(false);
+  const { setScrollState } = useContext(ThemeContext) as ThemeContextType;
+  const handleModalOpen = () => {
+    setScrollState(true);
+  };
   return (
     <div
       className="card shadow-xl project-style
@@ -31,13 +36,10 @@ export default function Project({ project }: ProjectProps) {
           Tech Stack: <span>{project.tech}</span>
         </p>
         <div className="card-actions justify-start mt-8">
-          <Button
-            onClick={() => setDisplayModal(!displayModal)}
-            text="Learn More"
-          />
+          <Button onClick={() => handleModalOpen()} text="Learn More" />
         </div>
       </div>
-      <Modal show={displayModal} setShow={setDisplayModal} project={project} />
+      <Modal project={project} />
     </div>
   );
 }
