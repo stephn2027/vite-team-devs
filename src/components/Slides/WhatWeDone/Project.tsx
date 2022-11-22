@@ -1,5 +1,7 @@
 import './style.scss';
-import ModalButton from '../../ModalButton';
+import { useState } from 'react';
+import Button from '../../Button';
+import Modal from '../../Modal';
 
 interface ProjectProps {
   project: {
@@ -14,6 +16,7 @@ interface ProjectProps {
 }
 
 export default function Project({ project }: ProjectProps) {
+  const [displayModal, setDisplayModal] = useState<boolean>(false);
   return (
     <div
       className="card shadow-xl project-style
@@ -28,9 +31,13 @@ export default function Project({ project }: ProjectProps) {
           Tech Stack: <span>{project.tech}</span>
         </p>
         <div className="card-actions justify-start mt-8">
-          <ModalButton text="Learn More" project={project} />
+          <Button
+            onClick={() => setDisplayModal(!displayModal)}
+            text="Learn More"
+          />
         </div>
       </div>
+      <Modal show={displayModal} setShow={setDisplayModal} project={project} />
     </div>
   );
 }
