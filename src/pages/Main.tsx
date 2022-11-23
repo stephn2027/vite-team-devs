@@ -18,6 +18,7 @@ import { ThemeContext } from '../context/themeContext';
 
 gsap.registerPlugin(Observer);
 Splitting();
+let modalOpenState;
 function Main() {
   const { changeTheme, scrollEnable } = useContext(
     ThemeContext
@@ -42,11 +43,12 @@ function Main() {
     let current = -1;
     // check if animation is in progress
     let isAnimating = false;
-
     const setCurrentSlide = (position) => {
-      // fix when modal opened it triggers
-      if (scrollEnable) return;
-
+      // fix for modal close triggers
+      if (modalOpenState) {
+        current = 2;
+        return;
+      }
       if (current !== -1) {
         slidesArr[current].DOM.el.classList.remove('slide--current');
       }
@@ -176,14 +178,18 @@ function Main() {
       });
     };
 
+    // check if modal is opened
+    if (scrollEnable) {
+      modalOpenState = true;
+    }
+    // Set current slide and initialize events
+    setCurrentSlide(0);
+    // if (!modalOpenCount) setCurrentSlide(0);
+    initEvents();
     // disable the All observer sroll when scrollEnable is faulty
     scrollEnable
       ? Observer.getAll().forEach((o) => o.disable())
       : SlideAnimation.enable();
-
-    // Set current slide and initialize events
-    setCurrentSlide(0);
-    initEvents;
   }, [changeTheme, scrollEnable]);
   return (
     <>
