@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { useEffect, useContext } from 'react';
 import { gsap } from 'gsap';
@@ -18,7 +19,9 @@ import { ThemeContext } from '../context/themeContext';
 gsap.registerPlugin(Observer);
 Splitting();
 function Main() {
-  const { changeTheme } = useContext(ThemeContext) as ThemeContextType;
+  const { changeTheme, scrollEnable } = useContext(
+    ThemeContext
+  ) as ThemeContextType;
   useEffect(() => {
     const DOM = {
       slides: [...document.querySelectorAll('.slide')],
@@ -41,6 +44,9 @@ function Main() {
     let isAnimating = false;
 
     const setCurrentSlide = (position) => {
+      // fix when modal opened it triggers
+      if (scrollEnable) return;
+
       if (current !== -1) {
         slidesArr[current].DOM.el.classList.remove('slide--current');
       }
@@ -152,6 +158,14 @@ function Main() {
           'start'
         );
     };
+    const SlideAnimation = Observer.create({
+      type: 'wheel,touch,pointer',
+      onDown: () => !isAnimating && prev(),
+      onUp: () => !isAnimating && next(),
+      // invert the mouse wheel delta
+      wheelSpeed: -1,
+      tolerance: 10,
+    });
     const initEvents = () => {
       // Links navigation
       [...DOM.navigationItems].forEach((item, position) => {
@@ -160,21 +174,17 @@ function Main() {
           navigate(position);
         });
       });
-      // Initialize the GSAP Observer plugin
-      Observer.create({
-        type: 'wheel,touch,pointer',
-        onDown: () => !isAnimating && prev(),
-        onUp: () => !isAnimating && next(),
-        // invert the mouse wheel delta
-        wheelSpeed: -1,
-        tolerance: 10,
-      });
     };
-    // Set current slide
+
+    // disable the All observer sroll when scrollEnable is faulty
+    scrollEnable
+      ? Observer.getAll().forEach((o) => o.disable())
+      : SlideAnimation.enable();
+
+    // Set current slide and initialize events
     setCurrentSlide(0);
-    // Initialize the events
-    initEvents();
-  }, [changeTheme]);
+    initEvents;
+  }, [changeTheme, scrollEnable]);
   return (
     <>
       <div className="frame">
