@@ -1,9 +1,9 @@
-import './style.scss';
 import { useContext } from 'react';
-import Button from '../../Button';
-import Modal from '../../Modal';
 import { ThemeContextType } from '../../../@types/theme';
 import { ThemeContext } from '../../../context/themeContext';
+import Button from '../../Button';
+import Modal from '../../Modal';
+import './style.scss';
 
 interface ProjectProps {
   project: {

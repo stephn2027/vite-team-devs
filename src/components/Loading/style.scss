@@ -1,0 +1,16 @@
+.spinner-container {
+    height: 35vh;
+    @include center;
+
+    .spinner-svg {
+        scale: 2;
+
+        @include sm {
+            scale: 1.2;
+        }
+
+        @include xs {
+            scale: .9;
+        }
+    }
+}

@@ -1,9 +1,11 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-useless-fragment */
 import gsap from 'gsap';
-import { useEffect, useCallback, useContext } from 'react';
+import { useEffect, useCallback, useContext, Suspense } from 'react';
 import { ThemeContextType } from '../../@types/theme';
 import { ThemeContext } from '../../context/themeContext';
+import Loading from '../Loading/loading';
+import SuspenseImg from '../SuspenseImage';
 import './style.scss';
 
 type ModalProps = {
@@ -51,17 +53,11 @@ export default function Modal({ project }: ModalProps) {
   return (
     <>
       {scrollEnable && (
-        <div
-          className="modal-style fixed inset-x-0 top-0 z-10"
-          role="button"
-          onClick={() => handleModalClose()}
-          tabIndex={0}
-          onKeyDown={null}
-        >
+        <div className="modal-style fixed inset-x-0 top-0 z-10">
           <div className="flex flex-col relative my-6 mx-auto max-w-6xl">
-            <div className="modal-style_container border-4 border-secondary rounded-lg shadow-lg bg-neutral outline-none focus:outline-none">
+            <div className="modal-style_container border-opacity-50 border-1 shadow-md rounded-lg shadow-lg bg-neutral outline-none focus:outline-none">
               <button
-                className="p-1 ml-auto bg-transparent border-0 opacity-1 float-right leading-none font-semibold"
+                className="bg-transparent border-0 opacity-1 float-right leading-none font-semibold"
                 onClick={() => handleModalClose()}
                 type="button"
               >
@@ -76,11 +72,16 @@ export default function Modal({ project }: ModalProps) {
                 <h5 className="modal-header_rDate text-1l p-1">
                   {project.releaseDate}
                 </h5>
-                <img
-                  src={project.imageUrl}
-                  alt=""
-                  className="modal-header_image"
-                />
+                <div className="modal-header_image">
+                  <Suspense fallback={<Loading />}>
+                    {!scrollEnable ? (
+                      <img src={project.imageUrl} alt="" />
+                    ) : (
+                      <SuspenseImg src={project.imageUrl} />
+                    )}
+                  </Suspense>
+                </div>
+
                 <ul className="modal-header_tech">
                   <li>Tech Stack: {project.tech}</li>
                   <li>Frontend: React/TypeScript</li>
