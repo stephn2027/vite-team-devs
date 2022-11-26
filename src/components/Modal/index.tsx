@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { useEffect, useCallback, useContext, Suspense } from 'react';
 import { ThemeContextType } from '../../@types/theme';
 import { ThemeContext } from '../../context/themeContext';
-import Loading from '../Loading/loading';
+import Loading from '../Loading';
 import SuspenseImg from '../SuspenseImage';
 import './style.scss';
 
