@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import STACKS from '../../../assets/constants/stacks';
 import './style.scss';
+import Icon from '../../Icons';
 
 export default function Stacks() {
   const [active, setActive] = useState(1);
@@ -19,6 +16,9 @@ export default function Stacks() {
             className={`tab ${active === id ? 'tab-active' : ''}`}
             onClick={() => handleActive(id)}
             key={id}
+            role="button"
+            tabIndex="0"
+            aria-hidden="true"
           >
             {title}
           </div>
@@ -31,7 +31,7 @@ export default function Stacks() {
             active === id ? 'tab-content-show' : 'tab-content-hide'
           }`}
         >
-          {tech}
+          <Icon IconName={tech} />
         </div>
       ))}
     </div>

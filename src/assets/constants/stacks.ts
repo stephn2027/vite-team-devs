@@ -3,7 +3,7 @@ type StacksItem = {
   title: string;
   tech: string[];
 };
-const STEPS_TEXT: StacksItem[] = [
+const STACKS: StacksItem[] = [
   {
     id: 1,
     title: 'WEB APP',
@@ -21,4 +21,4 @@ const STEPS_TEXT: StacksItem[] = [
   },
 ];
 
-export default STEPS_TEXT;
+export default STACKS;
