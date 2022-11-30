@@ -1,45 +1,116 @@
 .howWeDoStyle {
+
   background-color: var(--white);
-  padding: calc(100% - 85vw);
+  padding: calc(100% - 90vw);
+
   &_container {
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     box-sizing: border-box;
     align-items: center;
+    gap: calc(1vw - 90%);
 
-    gap: calc(50vw - 800px);
+    @include sm {
+      flex-direction: column;
+      width: 70vw;
+      margin: 0 auto;
+    }
+
+    @include xs {
+      flex-direction: column;
+      height: 70vh;
+      margin: 0 auto;
+
+    }
   }
+
+
 }
 
 .steps-style {
-  height: 75vh;
+  margin-top: 2rem;
+  height: 80vh;
+
+  @include sm {
+    height: 55vh;
+    overflow-y: scroll;
+  }
+
+  @include sm-down {
+    flex-direction: column;
+    height: 50vh;
+    width: auto;
+    margin-top: none;
+  }
+
   .steps-vertical {
     // to complete the :after circle
-    padding-left: 10px;
+    padding-left: 2rem;
   }
+
   .steps .step:after {
     height: 50px;
     width: 50px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
+
+
   }
+
   .steps-vertical .step:before {
     background-color: var(--secondary);
+
+    @include sm {
+      width: .4rem;
+    }
   }
+
   &_left {
     margin-top: 2rem;
-    margin-left: 10px;
+    margin-inline: 1rem;
+
+    @include xs {
+      margin-block: 2rem
+    }
+
+
     &-title {
-      font-size: 25px;
+      font-size: clamp(.7rem, .6rem + 1vw, 3rem);
       font-weight: bold;
       margin-bottom: 20px;
       text-align: left;
     }
+
     &-explain {
       text-align: left;
+      font-size: clamp(.4rem, .3rem + 1vw, 1rem);
+      width: 100%;
+      max-width: 38rem;
+
+      @include sm {
+        width: 90%;
+      }
+    }
+  }
+}
+
+.stepsCarousel-style {
+  width: 110%;
+  background-color: var(--secondary);
+
+  .carouselItem-style {
+    width: 60vw;
+    padding-inline-start: 1rem;
+    padding-bottom: 2rem;
+
+    @include xs {
+      height: 18vh;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
     }
   }
 }
@@ -47,17 +118,48 @@
 .content-style {
   flex-direction: column;
   display: flex;
-  gap: calc(30vh - 10rem);
-  &-title {
-    font-size: 60px;
+  gap: calc(30vh - 25rem);
+  width: 90vw;
+  max-width: 40rem;
+  margin-bottom: 1rem;
+
+  @include sm {
+    padding-inline: 2rem;
   }
+
+  @include xs {
+    padding-inline: 1rem;
+  }
+
+  &-title {
+    font-size: clamp(1rem, 1rem + 3vw, 6rem);
+  }
+
   &-sub {
     margin-top: 2rem;
     color: var(--black);
     width: 100%;
+    font-size: clamp(12px, 0.3rem + 0.9vw, 35px);
+
+    @include xs {
+      max-height: 100px;
+      overflow: hidden;
+    }
   }
+
   .content-style_img {
     height: 300px;
-    width: 90%;
+    width: 300px;
+    padding-top: 1rem;
+
+    @include sm {
+      margin: 0 auto;
+      height: 180px;
+      overflow: scroll;
+    }
+
+    @include xs {
+      height: 120px;
+    }
   }
 }
