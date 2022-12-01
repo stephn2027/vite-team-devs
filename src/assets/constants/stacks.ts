@@ -6,18 +6,42 @@ type StacksItem = {
 const STACKS: StacksItem[] = [
   {
     id: 1,
-    title: 'WEB APP',
-    tech: ['SiTypescript'],
+    title: 'WEB',
+    tech: [
+      'SiTypescript',
+      'SiPhp',
+      'SiPython',
+      'SiReact',
+      'SiVuedotjs',
+      'SiWordpress',
+      'SiJamstack',
+      'SiContentful',
+      'SiGatsby',
+    ],
   },
   {
     id: 2,
     title: 'DESIGN',
-    tech: ['SiFigma'],
+    tech: ['SiFigma', 'SiAdobephotoshop', 'SiAdobexd', 'SiAdobeillustrator'],
   },
   {
     id: 3,
-    title: 'CMS',
-    tech: ['SiWordpress'],
+    title: 'SERVER',
+    tech: ['SiAmazonaws', 'SiVercel', 'SiNetlify'],
+  },
+  {
+    id: 4,
+    title: 'TOOLS',
+    tech: [
+      'SiSlack',
+      'SiGithub',
+      'SiNotion',
+      'SiAsana',
+      'SiTrello',
+      'SiGmail',
+      'SiDocker',
+      'SiVisualstudiocode',
+    ],
   },
 ];
 

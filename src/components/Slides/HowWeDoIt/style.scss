@@ -1,22 +1,50 @@
 .howWeDoItStyle {
   background-color: var(--white);
-  padding: calc(100% - 85vw);
   &_container {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     box-sizing: border-box;
     align-items: center;
-
-    gap: calc(50vw - 800px);
+    gap: 100px;
   }
 }
 .stacks-style {
-  width: 100%;
+  position: relative;
+  .slider {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    background-color: var(--primary);
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.3);
+    height: 30px;
+    width: 100px;
+  }
+  .tabs {
+    width: 400px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary);
+  }
+  .tab {
+    width: 100px;
+    height: 30px;
+    &:not(.tab-active):hover {
+      color: var(--secondary);
+    }
+    &-active {
+      color: var(--white);
+    }
+  }
   .tab-content {
+    padding-top: 30px;
+    width: 400px;
+    height: 100px;
     &-show {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
     &-hide {
       display: none;
