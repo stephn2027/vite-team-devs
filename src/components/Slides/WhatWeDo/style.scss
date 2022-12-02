@@ -31,7 +31,7 @@
 
 .steps-style {
   margin-top: 2rem;
-  height: 80vh;
+  height: 60vh;
 
   @include sm {
     height: 55vh;
@@ -47,7 +47,7 @@
 
   .steps-vertical {
     // to complete the :after circle
-    padding-left: 2rem;
+    padding-left: 3rem;
   }
 
   .steps .step:after {
@@ -78,7 +78,7 @@
 
 
     &-title {
-      font-size: clamp(.7rem, .6rem + 1vw, 3rem);
+      font-size: clamp(.7rem, .5rem + 1vw, 1.6rem);
       font-weight: bold;
       margin-bottom: 20px;
       text-align: left;
@@ -132,14 +132,14 @@
   }
 
   &-title {
-    font-size: clamp(1rem, 1rem + 3vw, 6rem);
+    font-size: clamp(1rem, 1rem + 2.5vw, 3.5rem);
   }
 
   &-sub {
     margin-top: 2rem;
     color: var(--black);
     width: 100%;
-    font-size: clamp(12px, 0.3rem + 0.9vw, 35px);
+    font-size: clamp(12px, 0.3rem + 0.7vw, 1rem);
 
     @include xs {
       max-height: 100px;
