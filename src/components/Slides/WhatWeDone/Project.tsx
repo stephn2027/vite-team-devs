@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState, useCallback } from 'react';
 import { ThemeContextType } from '../../../@types/theme';
 import { ThemeContext } from '../../../context/themeContext';
 import Button from '../../Button';
@@ -18,10 +18,16 @@ interface ProjectProps {
 }
 
 export default function Project({ project }: ProjectProps) {
-  const { setScrollState } = useContext(ThemeContext) as ThemeContextType;
-  const handleModalOpen = () => {
+  const { setScrollState, scrollEnable } = useContext(
+    ThemeContext
+  ) as ThemeContextType;
+  const [displayModal, setDisplayModal] = useState(false);
+
+  const handleModalOpen = (event) => {
     setScrollState(true);
+    setDisplayModal(true);
   };
+
   return (
     <div
       className="card shadow-xl project-style
@@ -36,10 +42,15 @@ export default function Project({ project }: ProjectProps) {
           Tech Stack: <span>{project.tech}</span>
         </p>
         <div className="card-actions justify-start mt-8">
-          <Button onClick={() => handleModalOpen()} text="Learn More" />
+          <Button
+            onClick={(event) => handleModalOpen(event)}
+            text="Learn More"
+          />
         </div>
       </div>
-      <Modal project={project} />
+      {displayModal ? (
+        <Modal project={project} setDisplayModal={setDisplayModal} />
+      ) : null}
     </div>
   );
 }
