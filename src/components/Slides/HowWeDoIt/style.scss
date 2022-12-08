@@ -1,6 +1,7 @@
 .howWeDoItStyle {
   background-color: var(--white);
-  padding: calc(100% - 90vw);
+  padding: calc(100% - 95vw);
+
   &_container {
     height: 100%;
     width: 100%;
@@ -9,75 +10,135 @@
     justify-content: center;
     box-sizing: border-box;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
 
     @include sm {
       flex-direction: column;
       width: 70vw;
       margin: 0 auto;
     }
-  
+
     @include xs {
       flex-direction: column;
       height: 70vh;
       margin: 0 auto;
-  
+      height: fit-content;
     }
-  
+
   }
-  
+
 }
+
 .stacks-style {
-  position:relative;
+  position: relative;
   margin-top: 2rem;
-  height: 70vh;
+  height: 35vh;
   margin-inline: 3rem;
 
+
+
   @include sm {
-    height: 25vh;
+    height: 30vh;
     overflow-y: scroll;
   }
 
-  @include sm-down {
+  @include xs {
     flex-direction: column;
     height: 20vh;
-    width: auto;
+    margin-inline: auto;
     margin-top: none;
+
   }
+
   .slider {
     position: absolute;
-    left: 0;
+    left: 0px;
     top: 0px;
     background-color: var(--primary);
     box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.3);
     height: 30px;
     width: 100px;
+
+    @include xl {
+      width: 150px;
+    }
+
+    @include lg {
+      width: 150px;
+    }
+
+    @include xs {
+      width: 60px;
+    }
+
   }
+
   .tabs {
     width: 400px;
     padding-bottom: 5px;
     border-bottom: 1px solid var(--primary);
-    
+
+    @include xl {
+      width: 600px;
+    }
+
+    @include lg {
+      width: 600px;
+    }
+
+    @include xs {
+      width: 240px;
+    }
+
+
   }
+
   .tab {
     width: 100px;
     height: 30px;
+
+    @include xl {
+      width: 150px;
+    }
+
+    @include lg {
+      width: 150px;
+    }
+
+    @include xs {
+      width: 60px;
+      font-size: 10px;
+    }
+
+
     &:not(.tab-active):hover {
       color: var(--secondary);
     }
+
     &-active {
       color: var(--white);
     }
   }
+
   .tab-content {
     padding-top: 30px;
     width: 400px;
     height: 100px;
+
+    @include xl {
+      width: 600px;
+    }
+
+    @include xs {
+      width: 240px;
+    }
+
     &-show {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
     }
+
     &-hide {
       display: none;
     }

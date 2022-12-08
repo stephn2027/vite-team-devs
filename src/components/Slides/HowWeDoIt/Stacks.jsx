@@ -6,33 +6,85 @@ import Icon from '../../Icons';
 
 export default function Stacks() {
   const [active, setActive] = useState(1);
+  const [width, setWidth] = useState(window.innerWidth);
   const stacks = useRef(null);
   const animation = useRef(null);
+  const windowSizeSm = 360;
+  const windowSizeLg = 1280;
+
   useEffect(() => {
-    if (active === 1) {
-      animation.current = gsap.timeline().to(stacks.current, {
-        x: 0,
-      });
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth);
+    });
+    if (width < windowSizeSm) {
+      if (active === 1) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 0,
+        });
+      }
+      if (active === 2) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 60,
+        });
+      }
+      if (active === 3) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 120,
+        });
+      }
+      if (active === 4) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 180,
+        });
+      }
+    } else if (width >= windowSizeLg) {
+      if (active === 1) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 0,
+        });
+      }
+      if (active === 2) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 150,
+        });
+      }
+      if (active === 3) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 300,
+        });
+      }
+      if (active === 4) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 450,
+        });
+      }
+    } else {
+      if (active === 1) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 0,
+        });
+      }
+      if (active === 2) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 100,
+        });
+      }
+      if (active === 3) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 200,
+        });
+      }
+      if (active === 4) {
+        animation.current = gsap.timeline().to(stacks.current, {
+          x: 300,
+        });
+      }
     }
-    if (active === 2) {
-      animation.current = gsap.timeline().to(stacks.current, {
-        x: 100,
-      });
-    }
-    if (active === 3) {
-      animation.current = gsap.timeline().to(stacks.current, {
-        x: 200,
-      });
-    }
-    if (active === 4) {
-      animation.current = gsap.timeline().to(stacks.current, {
-        x: 300,
-      });
-    }
+
     return () => {
       animation.current.kill();
     };
-  }, [active]);
+  }, [active, width]);
 
   function handleActive(id) {
     setActive(id);
@@ -64,7 +116,10 @@ export default function Stacks() {
             <Icon
               IconName={icon}
               key={icon}
-              style={{ size: '2.7rem', color: '#0e0e12' }}
+              style={{
+                size: width < windowSizeSm ? '1.7rem' : '2.7rem',
+                color: '#0e0e12',
+              }}
             />
           ))}
         </div>
