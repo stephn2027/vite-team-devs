@@ -1,5 +1,6 @@
 .howWeDoItStyle {
   background-color: var(--white);
+  padding: calc(100% - 90vw);
   &_container {
     height: 100%;
     width: 100%;
@@ -9,10 +10,40 @@
     box-sizing: border-box;
     align-items: center;
     gap: 100px;
+
+    @include sm {
+      flex-direction: column;
+      width: 70vw;
+      margin: 0 auto;
+    }
+  
+    @include xs {
+      flex-direction: column;
+      height: 70vh;
+      margin: 0 auto;
+  
+    }
+  
   }
+  
 }
 .stacks-style {
-  position: relative;
+  position:relative;
+  margin-top: 2rem;
+  height: 70vh;
+  margin-inline: 3rem;
+
+  @include sm {
+    height: 25vh;
+    overflow-y: scroll;
+  }
+
+  @include sm-down {
+    flex-direction: column;
+    height: 20vh;
+    width: auto;
+    margin-top: none;
+  }
   .slider {
     position: absolute;
     left: 0;
@@ -26,6 +57,7 @@
     width: 400px;
     padding-bottom: 5px;
     border-bottom: 1px solid var(--primary);
+    
   }
   .tab {
     width: 100px;

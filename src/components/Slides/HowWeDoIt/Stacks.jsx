@@ -64,7 +64,7 @@ export default function Stacks() {
             <Icon
               IconName={icon}
               key={icon}
-              style={{ size: '3rem', color: '#0e0e12' }}
+              style={{ size: '2.7rem', color: '#0e0e12' }}
             />
           ))}
         </div>
