@@ -15,7 +15,7 @@
 
 
         .modal-close {
-            font-size: clamp(1rem, 1rem + 3vw, 4rem);
+            font-size: clamp(1rem, 1rem + 3vw, 3rem);
             font-weight: 200;
             padding: 0% 2% 1% 2%;
             position: absolute;
@@ -27,7 +27,7 @@
 
             &:hover {
                 transition: ease-out .3s;
-                scale: 1.4;
+                scale: 1.2;
             }
 
         }
