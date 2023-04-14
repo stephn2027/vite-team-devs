@@ -12,12 +12,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.2.5",
     "@types/gsap": "^3.0.0",
+    "bootstrap": "^5.2.3",
     "daisy": "^0.1.7",
     "daisyui": "^2.24.2",
     "gsap": "^3.11.1",
     "imagesloaded": "^5.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.3.0",

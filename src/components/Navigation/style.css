@@ -1,0 +1,67 @@
+.frame__nav {
+  grid-area: nav;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: row;
+  place-items: start;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  grid-gap: 0.5rem;
+}
+
+.frame__nav-button {
+  text-transform: uppercase;
+  position: relative;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  pointer-events: auto;
+}
+
+.frame__nav-button::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  top: 50%;
+  background-color: currentColor;
+  position: absolute;
+  right: calc(100% + 4px);
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
+}
+
+.frame__nav-button.frame__nav-button--current {
+  color: var(--primary);
+}
+
+.frame__nav-button:not(.frame__nav-button--current):hover {
+  color: var(--secondary);
+}
+
+.frame__nav-button--current::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.unbutton {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--color-link);
+}
+
+.link-black {
+  color: var(--black);
+}
+
+.unbutton:focus {
+  outline: none;
+}
+/*# sourceMappingURL=style.css.map */
