@@ -1,0 +1,38 @@
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  @include sm-down {
+    display: none;
+  }
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  &--dark {
+    background-color: var(--white);
+  }
+  &--light {
+    background-color: var(--black);
+  }
+}
+.cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  &--dark {
+    background-color: var(--primary);
+    opacity: 0.5;
+  }
+  &--light {
+    background-color: var(--black);
+    opacity: 0.5;
+  }
+}

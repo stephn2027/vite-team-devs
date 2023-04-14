@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useEffect, useRef } from 'react';
+import { useEffect, useContext } from 'react';
 import { gsap } from 'gsap';
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
@@ -8,19 +9,23 @@ import { Observer } from 'gsap/Observer';
 import Slide from '../utils/slide';
 
 import Navigation from '../components/Navigation';
-import AllSlides from '../components/AllSlides';
+import AllSlides from '../components/Slides';
+import AnimatedCursor from '../components/AnimatedCursor';
+import ScrollOrDrag from '../components/ScrollOrDrag';
+
+import { ThemeContextType } from '../@types/theme';
+import { ThemeContext } from '../context/themeContext';
 
 gsap.registerPlugin(Observer);
 Splitting();
+let modalOpenState;
 function Main() {
-  const arrowUp = useRef<HTMLDivElement>(null);
-  const arrowDown = useRef<HTMLDivElement>(null);
+  const { changeTheme, scrollEnable } = useContext(
+    ThemeContext
+  ) as ThemeContextType;
   useEffect(() => {
-    gsap.to(arrowUp.current, { y: -4, repeat: -1, yoyo: true });
-    gsap.to(arrowDown.current, { y: 4, repeat: -1, yoyo: true });
     const DOM = {
       slides: [...document.querySelectorAll('.slide')],
-      backCtrl: document.querySelector('.frame__back'),
       navigationItems: document.querySelectorAll(
         '.frame__nav > .frame__nav-button'
       ),
@@ -38,8 +43,12 @@ function Main() {
     let current = -1;
     // check if animation is in progress
     let isAnimating = false;
-
     const setCurrentSlide = (position) => {
+      // fix for modal close triggers
+      if (modalOpenState) {
+        current = 2;
+        return;
+      }
       if (current !== -1) {
         slidesArr[current].DOM.el.classList.remove('slide--current');
       }
@@ -62,7 +71,21 @@ function Main() {
 
     const navigate = (newPosition) => {
       isAnimating = true;
-
+      const tempArray = Array.from(
+        document.querySelectorAll('.frame__nav > .frame__nav-button')
+      );
+      if (newPosition === 1 || newPosition === 3) {
+        changeTheme('light');
+        tempArray.splice(newPosition, 1);
+        tempArray.forEach((arrayElement, index) => {
+          tempArray[index].classList.add('link-black');
+        });
+      } else {
+        changeTheme('dark');
+        tempArray.forEach((arrayElement, index) => {
+          tempArray[index].classList.remove('link-black');
+        });
+      }
       // change navigation current class
       DOM.navigationItems[current].classList.remove(
         'frame__nav-button--current'
@@ -70,7 +93,6 @@ function Main() {
       DOM.navigationItems[newPosition].classList.add(
         'frame__nav-button--current'
       );
-
       // navigation direction
       const direction =
         // eslint-disable-next-line no-nested-ternary
@@ -138,6 +160,14 @@ function Main() {
           'start'
         );
     };
+    const SlideAnimation = Observer.create({
+      type: 'wheel,touch,pointer',
+      onDown: () => !isAnimating && prev(),
+      onUp: () => !isAnimating && next(),
+      // invert the mouse wheel delta
+      wheelSpeed: -1,
+      tolerance: 10,
+    });
     const initEvents = () => {
       // Links navigation
       [...DOM.navigationItems].forEach((item, position) => {
@@ -146,34 +176,27 @@ function Main() {
           navigate(position);
         });
       });
-      // Initialize the GSAP Observer plugin
-      Observer.create({
-        type: 'wheel,touch,pointer',
-        onDown: () => !isAnimating && prev(),
-        onUp: () => !isAnimating && next(),
-        // invert the mouse wheel delta
-        wheelSpeed: -1,
-        tolerance: 10,
-      });
     };
-    // Set current slide
+
+    // check if modal is opened
+    if (scrollEnable) {
+      modalOpenState = true;
+    }
+    // Set current slide and initialize events
     setCurrentSlide(0);
-    // Initialize the events
+    // if (!modalOpenCount) setCurrentSlide(0);
     initEvents();
-  }, []);
+    // disable the All observer sroll when scrollEnable is faulty
+    scrollEnable
+      ? Observer.getAll().forEach((o) => o.disable())
+      : SlideAnimation.enable();
+  }, [changeTheme, scrollEnable]);
   return (
     <>
       <div className="frame">
+        <AnimatedCursor />
         <Navigation />
-        <span className="text-white subpixel-antialiased flex">
-          <span className="arrow-down mr-2" ref={arrowUp}>
-            &uarr;
-          </span>
-          Scroll or drag
-          <span className="ml-2" ref={arrowDown}>
-            &darr;
-          </span>
-        </span>
+        <ScrollOrDrag />
       </div>
       <AllSlides />
     </>

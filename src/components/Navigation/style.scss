@@ -41,10 +41,11 @@
   padding: 0;
   margin: 0;
   font: inherit;
-  cursor: pointer;
   color: var(--color-link);
 }
-
+.link-black {
+  color: var(--black);
+}
 .unbutton:focus {
   outline: none;
 }

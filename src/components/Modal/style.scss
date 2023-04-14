@@ -1,0 +1,75 @@
+.modal-style {
+    width: 90vw;
+    margin-inline: auto;
+    color: white;
+    box-sizing: border-box;
+
+    &_container {
+        display: inline-flex;
+        justify-content: center;
+        max-height: 95vh;
+        height: min-content;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        margin-top: 1rem;
+
+
+        .modal-close {
+            font-size: clamp(1rem, 1rem + 3vw, 3rem);
+            font-weight: 200;
+            padding: 0% 2% 1% 2%;
+            position: absolute;
+            top: 4vh;
+            right: 4vw;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(29, 28, 28, 0.6);
+            outline-offset: none;
+
+            &:hover {
+                transition: ease-out .3s;
+                scale: 1.2;
+            }
+
+        }
+
+        .modal-header {
+            margin-top: 3rem;
+
+
+            &_name {
+                margin-bottom: 1rem;
+                font-weight: 400;
+                font-size: clamp(1rem, 1rem + 1.5vw, 8rem);
+            }
+
+            &_rDate {
+                font-size: calc(0.5rem + 1vw);
+                font-weight: 500;
+                font-style: italic;
+                padding-bottom: 1rem;
+            }
+
+            &_image img {
+                width: 70vw;
+                margin-inline: auto;
+            }
+
+            &_tech {
+                padding-top: 1rem;
+                font-size: clamp(0.6rem, 0.5rem + 0.5vw, 1rem);
+                color: var(--secondary);
+            }
+        }
+    }
+
+    .description {
+        flex-wrap: wrap;
+        margin-bottom: auto;
+        text-transform: none;
+        width: 80vw;
+
+        &_p {
+            font-size: clamp(0.5rem, 0.4rem + 1vw, 1.2rem);
+        }
+    }
+}
