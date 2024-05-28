@@ -30,12 +30,11 @@
 }
 
 .stacks-container {
-  height: 18vh;
-  margin-top: -16rem;
-
+  height: 28vh;
+  margin-top: -32rem;
   @include xs {
     margin: 2rem 0 -2rem 0;
-    width: 90vw;
+    width: 80vw;
     
   }
 

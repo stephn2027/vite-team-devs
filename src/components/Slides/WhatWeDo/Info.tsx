@@ -6,20 +6,19 @@ export default function Info() {
       <div>
         <h1 className="font-bold content-style-title">What We Do</h1>
         <p className="content-style-sub">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-          id nisi.
+        Welcome to TeamDevs—where innovation meets excellence. We specialize in web, mobile, and software engineering, empowering businesses through cutting-edge technology. 
+        <br/>From concept to deployment, we're your partner every step of the way. Let's build something extraordinary together.
         </p>
       </div>
 
       <div className="columns-2">
         <img
-          src="https://placeimg.com/260/400/arch"
-          className="w-full  shadow-2xl content-style_img"
+          src="/src/altumcode-dMUt0X3f59Q-unsplash.jpg"
+          className="w-full shadow-2xl content-style_img"
           alt=""
         />
         <img
-          src="https://placeimg.com/260/400/arch"
+          src="/src/christopher-gower-m_HRfLhgABo-unsplash.jpg"
           className="w-full shadow-2xl content-style_img"
           alt=""
         />

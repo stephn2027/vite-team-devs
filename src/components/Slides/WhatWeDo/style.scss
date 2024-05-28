@@ -1,17 +1,19 @@
 .howWeDoStyle {
-
   background-color: var(--white);
   padding: calc(100% - 90vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &_container {
     height: 100%;
-    display: flex;
-    flex-direction: row;
+    display:flex;
+    flex-direction:row;
     justify-content: center;
-    box-sizing: border-box;
     align-items: center;
+    box-sizing: border-box;
     gap: calc(1vw - 90%);
-
+    
     @include sm {
       flex-direction: column;
       width: 70vw;
@@ -22,32 +24,31 @@
       flex-direction: column;
       height: 70vh;
       margin: 0 auto;
-
     }
   }
-
-
 }
 
 .steps-style {
   margin-top: 2rem;
   height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to the start */
 
   @include sm {
     height: 55vh;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
-  @include sm-down {
+  @include xs {
     flex-direction: column;
     height: 50vh;
     width: auto;
-    margin-top: none;
+    margin-top: 0;
   }
 
   .steps-vertical {
-    // to complete the :after circle
-    padding-left: 3rem;
+    padding-left: 3rem; // Assuming this is intentional
   }
 
   .steps .step:after {
@@ -56,41 +57,40 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
-
-
   }
-
-
 
   .steps-vertical .step:before {
     background-color: var(--black);
-
+    
     @include sm {
-      width: .4rem;
+      width: 0.4rem;
     }
   }
 
   &_left {
     margin-top: 2rem;
     margin-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     @include xs {
-      margin-block: 2rem
+      margin-block: 2rem;
+      align-items: center; /* Center align on small screens */
     }
 
-
     &-title {
-      font-size: clamp(.7rem, .5rem + 1vw, 1.6rem);
+      font-size: clamp(0.9rem, .7rem + .7vw, 1.5rem);
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-align: left;
     }
 
     &-explain {
       text-align: left;
-      font-size: clamp(.4rem, .3rem + 1vw, 1rem);
+      font-size: clamp(0.3rem, 0.3rem + .7vw, .8rem);
       width: 100%;
-      max-width: 38rem;
+      max-width: 40rem;
 
       @include sm {
         width: 90%;
@@ -100,11 +100,11 @@
 }
 
 .stepsCarousel-style {
-  width: 110%;
+  width: 100%; /* Adjusted width to fit the container */
   background-color: var(--secondary);
 
   .carouselItem-style {
-    width: 60vw;
+    width: 100%; /* Adjusted width to fit the container */
     padding-inline-start: 1rem;
     padding-bottom: 2rem;
 
@@ -120,8 +120,9 @@
 .content-style {
   flex-direction: column;
   display: flex;
-  gap: calc(30vh - 25rem);
-  width: 90vw;
+  margin-top: -8rem;
+  gap: 2rem; /* Adjusted gap */
+  width: 100%; /* Adjusted width to fit the container */
   max-width: 40rem;
   margin-bottom: 1rem;
 
@@ -141,8 +142,7 @@
     margin-top: 2rem;
     color: var(--black);
     width: 100%;
-    font-size: clamp(12px, 0.3rem + 0.7vw, 1rem);
-
+    font-size: clamp(10px, 0.3rem + 0.7vw, 1rem);
     @include xs {
       max-height: 100px;
       overflow: hidden;
@@ -153,6 +153,7 @@
     height: 300px;
     width: 300px;
     padding-top: 1rem;
+    object-fit: cover;
 
     @include sm {
       margin: 0 auto;
