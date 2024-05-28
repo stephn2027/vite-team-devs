@@ -1,3 +1,5 @@
+import img1 from '/src/altumcode-dMUt0X3f59Q-unsplash.jpg'
+import img2 from '/src/christopher-gower-m_HRfLhgABo-unsplash.jpg'
 import './style.scss';
 
 export default function Info() {
@@ -17,12 +19,12 @@ export default function Info() {
 
       <div className="columns-2">
         <img
-          src="/src/altumcode-dMUt0X3f59Q-unsplash.jpg"
+          src={img1}
           className="w-full shadow-2xl content-style_img"
           alt=""
         />
         <img
-          src="/src/christopher-gower-m_HRfLhgABo-unsplash.jpg"
+          src={img2}
           className="w-full shadow-2xl content-style_img"
           alt=""
         />
