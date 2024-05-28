@@ -1,4 +1,6 @@
 import './style.scss';
+import img1 from '/src/altumcode-dMUt0X3f59Q-unsplash.jpg'
+import img2 from '/src/christopher-gower-m_HRfLhgABo-unsplash.jpg'
 
 export default function Explain() {
   return (
@@ -14,12 +16,12 @@ export default function Explain() {
 
       <div className="columns-2">
         <img
-          src="/src/altumcode-dMUt0X3f59Q-unsplash.jpg"
+          src={img1}
           className="w-full  shadow-2xl content-style_img"
           alt=""
         />
         <img
-          src="/src/christopher-gower-m_HRfLhgABo-unsplash.jpg"
+          src={img2}
           className="w-full shadow-2xl content-style_img"
           alt=""
         />
