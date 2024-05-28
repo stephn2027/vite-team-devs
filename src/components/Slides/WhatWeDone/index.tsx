@@ -16,7 +16,11 @@ export default function WhatWeDone() {
       <div className="we-done-style">
         <h1 className="text-5xl font-bold text-white">What We've Done</h1>
         <h3 className="text-white text-l text-center mt-10 mb-10">
-        Welcome to TeamDev's portfolio of success. From websites to mobile apps, our diverse projects demonstrate our commitment to excellence. Each success story showcases our dedication, creativity, and technical prowess. Join us as we continue to innovate and inspire. Let's create the next success together.
+          Welcome to TeamDev's portfolio of success. From websites to mobile
+          apps, our diverse projects demonstrate our commitment to excellence.
+          Each success story showcases our dedication, creativity, and technical
+          prowess. Join us as we continue to innovate and inspire. Let's create
+          the next success together.
         </h3>
       </div>
       {width < breakpoint ? <PortfolioCarousel /> : <Portfolio />}
